@@ -5,12 +5,15 @@ Runs several realistic conversation traces.
 """
 
 import json
+import os
 import requests
 
-BASE_URL = "http://localhost:8000"
+BASE_URL = os.environ.get("BASE_URL", "http://127.0.0.1:8000").rstrip("/")
+CHAT_TIMEOUT = int(os.environ.get("CHAT_TIMEOUT", "90"))
+HEALTH_TIMEOUT = int(os.environ.get("HEALTH_TIMEOUT", "15"))
 
 def call_chat(messages: list[dict]) -> dict:
-    resp = requests.post(f"{BASE_URL}/chat", json={"messages": messages}, timeout=30)
+    resp = requests.post(f"{BASE_URL}/chat", json={"messages": messages}, timeout=CHAT_TIMEOUT)
     resp.raise_for_status()
     return resp.json()
 
@@ -51,7 +54,7 @@ def run_trace(name: str, turns: list[str], verbose: bool = True):
     return recommendations
 
 def test_health():
-    resp = requests.get(f"{BASE_URL}/health", timeout=10)
+    resp = requests.get(f"{BASE_URL}/health", timeout=HEALTH_TIMEOUT)
     assert resp.status_code == 200
     assert resp.json()["status"] == "ok"
     print("✅ Health check passed")
@@ -142,7 +145,8 @@ def test_schema_compliance():
 
 if __name__ == "__main__":
     print("Starting SHL Recommender Tests...")
-    print("Make sure the server is running: uvicorn main:app --port 8000\n")
+    print(f"Testing API: {BASE_URL}")
+    print(f"Chat timeout: {CHAT_TIMEOUT}s\n")
     
     try:
         test_health()
@@ -156,6 +160,12 @@ if __name__ == "__main__":
         print("\n" + "="*60)
         print("ALL TESTS PASSED ✅")
         print("="*60)
+    except requests.Timeout:
+        print(
+            f"\nRequest timed out after {CHAT_TIMEOUT}s. "
+            "Render or the LLM call is taking too long. "
+            "Try again, or run with a larger timeout: $env:CHAT_TIMEOUT='180'; python .\\test_api.py"
+        )
     except AssertionError as e:
         print(f"\n❌ TEST FAILED: {e}")
     except requests.ConnectionError:
