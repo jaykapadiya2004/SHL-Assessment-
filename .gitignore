@@ -1,0 +1,229 @@
+# =========================
+# OS FILES
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# PYTHON
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env/
+.venv/
+ENV/
+env/
+
+# Python packaging
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing / coverage
+.coverage
+.coverage.*
+.cache/
+.pytest_cache/
+htmlcov/
+.tox/
+.nox/
+hypothesis/
+
+# Type checkers
+.mypy_cache/
+.pyre/
+.pytype/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# =========================
+# ENVIRONMENT VARIABLES
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# LOG FILES
+# =========================
+*.log
+logs/
+log/
+
+# =========================
+# DATABASES
+# =========================
+*.db
+*.sqlite3
+*.sqlite
+
+# =========================
+# IDE / EDITOR
+# =========================
+
+# VS Code
+.vscode/
+
+# JetBrains
+.idea/
+*.iml
+
+# Sublime
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+
+# =========================
+# NODE.JS
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+.next/
+.nuxt/
+dist/
+coverage/
+
+# =========================
+# DOCKER
+# =========================
+docker-data/
+*.pid
+
+# Docker overrides
+docker-compose.override.yml
+
+# =========================
+# FASTAPI / UVICORN
+# =========================
+*.uvicorn
+
+# =========================
+# ML / AI FILES
+# =========================
+
+# Model weights
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.onnx
+*.pb
+*.joblib
+*.pkl
+*.pickle
+
+# HuggingFace / transformers cache
+.cache/huggingface/
+huggingface/
+
+# Tensorboard
+runs/
+wandb/
+
+# Datasets
+data/
+datasets/
+
+# =========================
+# WEAVIATE / VECTOR DB
+# =========================
+weaviate-data/
+*.backup
+
+# =========================
+# CELERY / REDIS
+# =========================
+celerybeat-schedule
+dump.rdb
+
+# =========================
+# TERRAFORM
+# =========================
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# =========================
+# KUBERNETES
+# =========================
+*.kubeconfig
+
+# =========================
+# SECRETS / KEYS
+# =========================
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+id_rsa
+id_rsa.pub
+
+# =========================
+# TEMP FILES
+# =========================
+tmp/
+temp/
+*.tmp
+
+# =========================
+# MEDIA FILES (OPTIONAL)
+# Uncomment if needed
+# =========================
+# *.mp4
+# *.zip
+# *.tar.gz
+# *.csv
+# *.parquet
+# uploads/
+
+# =========================
+# GENERATED FILES
+# =========================
+generated/
+output/
+
+# =========================
+# CACHE
+# =========================
+.cache/
+pytestdebug.log
+
+# =========================
+# MAC / LINUX METADATA
+# =========================
+.AppleDouble
+.LSOverride
+
+# =========================
+# WINDOWS
+# =========================
+ehthumbs.db
